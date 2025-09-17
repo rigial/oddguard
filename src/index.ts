@@ -1,8 +1,6 @@
-'use strict';
-
-function isNumber(num) {
+function isNumber(num: unknown): boolean {
     if (typeof num === 'number') {
-        return num - num === 0;
+        return num - (num as number) === 0;
     }
     if (typeof num === 'string' && num.trim() !== '') {
         return Number.isFinite ? Number.isFinite(+num) : isFinite(+num);
@@ -10,9 +8,8 @@ function isNumber(num) {
     return false;
 };
 
-
-function isOdd(value) {
-    const n = Math.abs(value);
+function isOdd(value: unknown): boolean {
+    const n = Math.abs(Number(value));
     if (!isNumber(n)) {
         throw new TypeError('expected a number');
     }
@@ -25,4 +22,4 @@ function isOdd(value) {
     return (n % 2) === 1;
 };
 
-module.exports = { isOdd, isNumber };
+export { isOdd, isNumber };

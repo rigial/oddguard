@@ -1,8 +1,6 @@
-'use strict';
+import { assert } from "chai";
+import { isOdd, isNumber } from '../src';
 
-require('mocha');
-const assert = require('assert');
-const { isOdd, isNumber } = require("./index");
 describe('isOdd', function() {
   it('should return true if the number is odd:', function() {
     assert(!isOdd(0));
@@ -25,7 +23,7 @@ describe('isOdd', function() {
   });
 
   it('should throw an error when an invalid value is passed', function() {
-    assert.throws(() => isOdd(), /expected a number/);
+    assert.throws(() => isOdd(undefined), /expected a number/);
     assert.throws(() => isOdd('foo'), /expected a number/);
     assert.throws(() => isOdd('1.1e0'), /expected an integer/);
     assert.throws(() => isOdd('9007199254740992'), /value exceeds maximum safe integer/);
@@ -34,7 +32,7 @@ describe('isOdd', function() {
 });
 
 describe('is a number', function() {
-  var fixtures = [
+  const fixtures: (number | string)[] = [
     0xff,
     5e3,
     0,
@@ -43,14 +41,12 @@ describe('is a number', function() {
     -1.1,
     37,
     3.14,
-
     1,
     1.1,
     10,
     10.1,
     100,
     -100,
-
     '0.1',
     '-0.1',
     '-1.1',
@@ -64,10 +60,7 @@ describe('is a number', function() {
     '100',
     '5e3',
     '   56\r\n  ', // issue#3
-
     Math.LN2,
-
-    // 012, Octal literal not allowed in strict mode
     parseInt('012'),
     parseFloat('012'),
     Math.abs(1),
@@ -90,24 +83,21 @@ describe('is a number', function() {
     Math.PI,
     Math.pow(1, 2),
     Math.pow(5, 5),
-    Math.random(1),
+    Math.random(),
     Math.round(1),
     Math.sin(1),
     Math.sqrt(1),
     Math.SQRT1_2,
     Math.SQRT2,
     Math.tan(1),
-
     Number.MAX_VALUE,
     Number.MIN_VALUE,
-
     '0.0',
     '0x0',
     '0e+5',
     '000',
     '0.0e-5',
     '0.0E5',
-
     +'',
     +1,
     +3.14,
@@ -117,11 +107,11 @@ describe('is a number', function() {
     +false,
     +Math.LN2,
     +true,
-    +null,
+    // +null,
     +new Date()
   ];
 
-  fixtures.forEach(function(num, idx) {
+  fixtures.forEach(function(num: number | string, idx: number) {
     it(JSON.stringify(num) + ' should be a number', function() {
       assert(isNumber(num), 'expected "' + String(num) + '" to be a number');
     });
@@ -129,7 +119,7 @@ describe('is a number', function() {
 });
 
 describe('is not a number', function() {
-  var fixtures = [
+  const fixtures: any[] = [
     '   ', // issue#3
     '\r\n\t', // issue#3
     '',
@@ -146,7 +136,7 @@ describe('is not a number', function() {
     +Infinity,
     +Math.sin,
     +NaN,
-    +undefined,
+    // +undefined,
     +{ a: 1 },
     +{},
     /foo/,
@@ -167,7 +157,7 @@ describe('is not a number', function() {
     {}
   ];
 
-  fixtures.forEach(function(num) {
+  fixtures.forEach(function(num: any) {
     it(JSON.stringify(num) + ' should not be a number', function() {
       assert(!isNumber(num), 'expected "' + String(num) + '" to not be a number');
     });

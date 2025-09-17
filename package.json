@@ -1,0 +1,83 @@
+{
+  "name": "oddguard",
+  "description": "Utility functions to check if a value is an odd integer within JavaScript's safe range, and to validate whether a value (number or string) is a finite number for input parsing, regex matches, and user validation.",
+  "keywords": [
+    "array",
+    "cast",
+    "check",
+    "coerce",
+    "coercion",
+    "count",
+    "even",
+    "filter",
+    "finite",
+    "integer",
+    "is",
+    "is-nan",
+    "is-num",
+    "is-number",
+    "isfinite",
+    "isnan",
+    "istype",
+    "kind",
+    "math",
+    "nan",
+    "num",
+    "number",
+    "numeric",
+    "odd",
+    "parseFloat",
+    "parseInt",
+    "string",
+    "test",
+    "type",
+    "typeof",
+    "value"
+  ],
+  "version": "1.0.0",
+  "homepage": "https://github.com/rigial/oddguard",
+  "author": "M R Kishore Kumar (https://github.com/mrkishorekumar)",
+  "contributors": [
+    "M R Kishore Kumar (https://github.com/mrkishorekumar)"
+  ],
+  "repository": "rigial/oddguard",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "bugs": {
+    "url": "https://github.com/rigial/oddguard/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^11.7.2"
+  },
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "related": {
+      "list": [
+        "is-plain-object",
+        "is-primitive",
+        "isobject",
+        "kind-of",
+        "exponential-moving-average",
+        "is-even",
+        "is-odd",
+        "sma"
+      ]
+    },
+    "lint": {
+      "reflinks": true
+    }
+  }
+}
